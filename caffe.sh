@@ -32,8 +32,8 @@ sudo apt-get clean
 # Optionally, download your own cudnn; requires registration.
 if [ -f "cudnn-7.0-linux-x64-v3.0-rc.tgz" ] ; then
   tar -xvf cudnn-7.0-linux-x64-v3.0-rc.tgz
-  sudo cp -P cudnn*/libcudnn* /usr/local/cuda/lib64
-  sudo cp cudnn*/cudnn.h /usr/local/cuda/include
+  sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
+  sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 fi
 # Need to put cuda on the linker path.  This may not be the best way, but it works.
 sudo sh -c "sudo echo '/usr/local/cuda/lib64' > /etc/ld.so.conf.d/cuda_hack.conf"
@@ -44,11 +44,12 @@ sudo ln -s libhdf5.so.7 libhdf5.so.10
 sudo ln -s libhdf5_hl.so.7 libhdf5_hl.so.10
 
 # Get caffe, and install python requirements
+cd ~/
 # git clone https://github.com/BVLC/caffe.git
 git clone https://github.com/NVIDIA/caffe.git
 cd caffe
 
-if [ ! hash conda ] ; then
+if ! hash conda 2>/dev/null ; then
   cd python
   for req in $(cat requirements.txt); do sudo pip install $req; done
   cd ../
@@ -63,7 +64,7 @@ sed -i '/^# WITH_PYTHON_LAYER := 1/s/^# //' Makefile.config
 sed -i '/^PYTHON_INCLUDE/a    /usr/local/lib/python2.7/dist-packages/numpy/core/include/ \\' Makefile.config
 
 # Use Anaconda Python
-if [ hash conda ] ; then
+if hash conda 2>/dev/null ; then
   sed -i '/^PYTHON_INCLUDE := \/usr/s/^P/# P/' Makefile.config
   sed -i '/^# ANACONDA_HOME/s/^# //' Makefile.config
   sed -i '/^# PYTHON_INCLUDE := \$(ANACONDA_HOME)/s/^# //' Makefile.config
@@ -98,4 +99,4 @@ make runtest
 cd ../
 mkdir installation_files
 mv cudnn* installation_files/
-mv cuda-repo* installation_files/
+mv cuda* installation_files/
