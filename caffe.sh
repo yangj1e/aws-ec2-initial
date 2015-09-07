@@ -49,7 +49,9 @@ cd ~/
 git clone https://github.com/NVIDIA/caffe.git
 cd caffe
 
-if ! hash conda 2>/dev/null ; then
+if hash conda 2>/dev/null ; then
+  conda install opencv
+else
   cd python
   for req in $(cat requirements.txt); do sudo pip install $req; done
   cd ../
