@@ -39,10 +39,6 @@ fi
 sudo sh -c "sudo echo '/usr/local/cuda/lib64' > /etc/ld.so.conf.d/cuda_hack.conf"
 sudo ldconfig /usr/local/cuda/lib64
 
-cd /usr/lib/x86_64-linux-gnu
-sudo ln -s libhdf5.so.7 libhdf5.so.10
-sudo ln -s libhdf5_hl.so.7 libhdf5_hl.so.10
-
 # Get caffe, and install python requirements
 cd ~/
 # git clone https://github.com/BVLC/caffe.git
@@ -50,7 +46,15 @@ git clone https://github.com/NVIDIA/caffe.git
 cd caffe
 
 if hash conda 2>/dev/null ; then
-  conda install opencv
+  conda install -y opencv
+  cd /usr/lib/x86_64-linux-gnu
+  # sudo ln -s libhdf5.so.7 libhdf5.so.10
+  # sudo ln -s libhdf5_hl.so.7 libhdf5_hl.so.10
+  # sudo ln -s libpng12.so.0 libpng16.so.16
+  sudo ln -s ~/anaconda/lib/libhdf5.so.10 libhdf5.so.10
+  sudo ln -s ~/anaconda/lib/libhdf5_hl.so.10 libhdf5_hl.so.10
+  sudo ln -s ~/anaconda/lib/libpng16.so.16 libpng16.so.16
+  sudo ldconfig
 else
   cd python
   for req in $(cat requirements.txt); do sudo pip install $req; done
