@@ -43,7 +43,6 @@ sudo ldconfig /usr/local/cuda/lib64
 cd ~/
 # git clone https://github.com/BVLC/caffe.git
 git clone https://github.com/NVIDIA/caffe.git
-cd caffe
 
 if hash conda 2>/dev/null ; then
   conda install -y opencv
@@ -55,8 +54,9 @@ if hash conda 2>/dev/null ; then
   sudo ln -s ~/anaconda/lib/libhdf5_hl.so.10 libhdf5_hl.so.10
   sudo ln -s ~/anaconda/lib/libpng16.so.16 libpng16.so.16
   sudo ldconfig
+  cd ~/caffe
 else
-  cd python
+  cd ~/caffe/python
   for req in $(cat requirements.txt); do sudo pip install $req; done
   cd ../
 fi
