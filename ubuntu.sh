@@ -2,7 +2,7 @@
 
 sudo locale-gen en_AU.UTF-8
 sudo apt-get update
-sudo apt-get upgrade -y
+sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade
 sudo apt-get install -y -q zsh git zip unzip build-essential htop
 sudo apt-get clean
 

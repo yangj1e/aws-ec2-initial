@@ -45,7 +45,7 @@ cd ~/
 git clone https://github.com/NVIDIA/caffe.git
 
 if hash conda 2>/dev/null ; then
-  conda install -y opencv
+  conda install -y opencv joblib
   cd /usr/lib/x86_64-linux-gnu
   # sudo ln -s libhdf5.so.7 libhdf5.so.10
   # sudo ln -s libhdf5_hl.so.7 libhdf5_hl.so.10
