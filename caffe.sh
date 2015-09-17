@@ -99,7 +99,7 @@ sudo update-rc.d create_build_dir defaults
 make -j 8 all py
 
 make -j 8 test
-make runtest
+# make runtest
 
 # Do some cleanup
 cd ../
