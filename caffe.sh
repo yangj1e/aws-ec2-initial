@@ -30,8 +30,8 @@ sudo apt-get install -y cuda
 sudo apt-get clean
 
 # Optionally, download your own cudnn; requires registration.
-if [ -f "cudnn-7.0-linux-x64-v3.0-rc.tgz" ] ; then
-  tar -xvf cudnn-7.0-linux-x64-v3.0-rc.tgz
+if [ -f "cudnn-7.0-linux-x64-v3.0-prod.tgz" ] ; then
+  tar -xvf cudnn-7.0-linux-x64-v3.0-prod.tgz
   sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
   sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 fi
@@ -63,7 +63,7 @@ fi
 
 # Prepare Makefile.config so that it can build on aws
 cp Makefile.config.example Makefile.config
-if [ -f "../cudnn-7.0-linux-x64-v3.0-rc.tgz" ] ; then
+if [ -f "../cudnn-7.0-linux-x64-v3.0-prod.tgz" ] ; then
   sed -i '/^# USE_CUDNN := 1/s/^# //' Makefile.config
 fi
 sed -i '/^# WITH_PYTHON_LAYER := 1/s/^# //' Makefile.config
