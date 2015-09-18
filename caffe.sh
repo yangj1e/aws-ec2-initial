@@ -106,3 +106,6 @@ cd ../
 mkdir installation_files
 mv cudnn* installation_files/
 mv cuda* installation_files/
+
+echo 'export PYTHONPATH="/home/ubuntu/caffe/python:$PYTHONPATH"' >> ~/.zshrc
+. ~/.zshrc
