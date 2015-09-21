@@ -45,7 +45,7 @@ cd ~/
 git clone https://github.com/NVIDIA/caffe.git
 
 if hash conda 2>/dev/null ; then
-  conda install -y opencv joblib
+  conda install -y opencv
   cd /usr/lib/x86_64-linux-gnu
   # sudo ln -s libhdf5.so.7 libhdf5.so.10
   # sudo ln -s libhdf5_hl.so.7 libhdf5_hl.so.10
@@ -107,5 +107,5 @@ mkdir installation_files
 mv cudnn* installation_files/
 mv cuda* installation_files/
 
+export PYTHONPATH="home/ubuntu/caffe/python:$PYTHONPATH"
 echo 'export PYTHONPATH="/home/ubuntu/caffe/python:$PYTHONPATH"' >> ~/.zshrc
-. ~/.zshrc
