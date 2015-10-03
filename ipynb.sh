@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ipython profile create nbserver
 key=$(python -c "from IPython.lib import passwd; print(passwd())")

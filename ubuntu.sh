@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 sudo locale-gen en_AU.UTF-8
 sudo apt-get update
@@ -8,7 +8,7 @@ sudo apt-get clean
 
 git clone git://github.com/robbyrussell/oh-my-zsh.git ~/.oh-my-zsh
 cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-sed -i '/^ZSH_THEME="robbyrussell"/s/robbyrussell/clean/' ~/.zshrc
+sed -i '/^ZSH_THEME=/s/robbyrussell/frisk/' ~/.zshrc
 sed -i '/^plugins=/s/)/ ubuntu)/' ~/.zshrc
 sudo chsh ubuntu -s $(which zsh)
 

@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Add Nvidia's cuda repository
 if [ ! -f "cuda-repo-ubuntu1404_7.0-28_amd64.deb" ] ; then
   wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
