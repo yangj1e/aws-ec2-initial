@@ -2,7 +2,8 @@
 
 cd ~/
 git clone https://github.com/NVIDIA/DIGITS.git
-echo '[DIGITS]\ncaffe_root = /home/ubuntu/caffe\n' >> DIGITS/digits/digits.cfg
+echo '[DIGITS]' >> DIGITS/digits/digits.cfg
+echo 'caffe_root = /home/ubuntu/caffe' >> DIGITS/digits/digits.cfg
 
 cd DIGITS/
 if hash conda 2>/dev/null ; then
