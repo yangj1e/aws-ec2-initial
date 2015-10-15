@@ -98,9 +98,9 @@ sudo /etc/init.d/create_build_dir
 sudo update-rc.d create_build_dir defaults
 
 # And finally build!
-make -j 8 all py
-
-make -j 8 test
+num_cores=$(nproc)
+make -j $num_cores all py
+make -j $num_cores test
 # make runtest
 
 # Do some cleanup
