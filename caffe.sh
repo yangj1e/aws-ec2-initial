@@ -44,7 +44,7 @@ sudo ldconfig /usr/local/cuda/lib64
 # Get caffe, and install python requirements
 cd ~/
 # git clone https://github.com/BVLC/caffe.git
-git clone https://github.com/NVIDIA/caffe.git
+git clone --branch caffe-0.13 https://github.com/NVIDIA/caffe.git
 
 if hash conda 2>/dev/null ; then
   conda install -y opencv
