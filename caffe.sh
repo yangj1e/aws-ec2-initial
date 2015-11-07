@@ -52,9 +52,9 @@ if hash conda 2>/dev/null ; then
   # sudo ln -s libhdf5.so.7 libhdf5.so.10
   # sudo ln -s libhdf5_hl.so.7 libhdf5_hl.so.10
   # sudo ln -s libpng12.so.0 libpng16.so.16
-  sudo ln -s ~/anaconda/lib/libhdf5.so.10 libhdf5.so.10
-  sudo ln -s ~/anaconda/lib/libhdf5_hl.so.10 libhdf5_hl.so.10
-  sudo ln -s ~/anaconda/lib/libpng16.so.16 libpng16.so.16
+  sudo ln -s ~/anaconda2/lib/libhdf5.so.10 libhdf5.so.10
+  sudo ln -s ~/anaconda2/lib/libhdf5_hl.so.10 libhdf5_hl.so.10
+  sudo ln -s ~/anaconda2/lib/libpng16.so.16 libpng16.so.16
   sudo ldconfig
   cd ~/caffe
 else
@@ -74,6 +74,7 @@ sed -i '/^PYTHON_INCLUDE/a    /usr/local/lib/python2.7/dist-packages/numpy/core/
 # Use Anaconda Python
 if hash conda 2>/dev/null ; then
   sed -i '/^PYTHON_INCLUDE := \/usr/s/^P/# P/' Makefile.config
+  sed -i '/^# ANACONDA_HOME/s/anaconda$/anaconda2/' Makefile.config
   sed -i '/^# ANACONDA_HOME/s/^# //' Makefile.config
   sed -i '/^# PYTHON_INCLUDE := \$(ANACONDA_HOME)/s/^# //' Makefile.config
   sed -i '/^\t\t# \$(ANACONDA_HOME)/s/^\t\t# /\t\t/' Makefile.config
