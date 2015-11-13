@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 jupyter notebook --generate-config
-
 key=$(python -c "from notebook.auth import passwd; print(passwd())")
 
 cd ~/.jupyter

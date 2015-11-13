@@ -5,13 +5,12 @@ git clone https://github.com/NVIDIA/DIGITS.git
 echo '[DIGITS]' >> DIGITS/digits/digits.cfg
 echo 'caffe_root = /home/ubuntu/caffe' >> DIGITS/digits/digits.cfg
 
-cd DIGITS/
 if hash conda 2>/dev/null ; then
     conda install -y protobuf flask-wtf gevent
     # pip install lmdb flask-socketio pydot2 gunicorn==17.5
-    pip install -r requirements.txt
+    pip install -r DIGITS/requirements.txt
 else
-    sudo pip install -r requirements.txt
+    sudo pip install -r DIGITS/requirements.txt
 fi
 
 sudo apt-get install -y graphviz
