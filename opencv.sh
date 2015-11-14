@@ -1,7 +1,7 @@
 sudo apt-get update
 sudo apt-get install -y build-essential \
     cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev \
-    libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libatlas-base-dev
+    libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev
 sudo apt-get clean
 
 sudo bash -c 'cat <<EOF > /etc/init.d/create_build_dir

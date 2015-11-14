@@ -80,6 +80,7 @@ if hash conda 2>/dev/null ; then
   sed -i '/^\t\t# \$(ANACONDA_HOME)/s/^\t\t# /\t\t/' Makefile.config
   sed -i '/^PYTHON_LIB := \/usr/s/^P/# P/' Makefile.config
   sed -i '/^# PYTHON_LIB := \$(ANACONDA_HOME)/s/^# //' Makefile.config
+  # sed -i '/^# USE_PKG_CONFIG/s/^# //' Makefile.config
 fi
 
 # Caffe takes quite a bit of disk space to build, and we don't have very much on /.
