@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 # Add Nvidia's cuda repository
-if [ ! -f "cuda-repo-ubuntu1404_7.0-28_amd64.deb" ] ; then
-  wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_7.0-28_amd64.deb
-  sudo dpkg -i cuda-repo-ubuntu1404_7.0-28_amd64.deb
+if [ ! -f "cuda-repo-ubuntu1404_7.5-18_amd64.deb" ] ; then
+  CUDA_REPO_PKG=cuda-repo-ubuntu1404_7.5-18_amd64.deb &&
+    wget http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/$CUDA_REPO_PKG &&
+    sudo dpkg -i $CUDA_REPO_PKG
 fi
 
 sudo apt-get update
@@ -32,8 +33,8 @@ sudo apt-get install -y cuda
 sudo apt-get clean
 
 # Optionally, download your own cudnn; requires registration.
-if [ -f "cudnn-7.0-linux-x64-v3.0-prod.tgz" ] ; then
-  tar -xvf cudnn-7.0-linux-x64-v3.0-prod.tgz
+if [ -f "cudnn-7.0-linux-x64-v4.0-prod.tgz" ] ; then
+  tar -xvf cudnn-7.0-linux-x64-v4.0-prod.tgz
   sudo cp -P cuda/lib64/libcudnn* /usr/local/cuda/lib64
   sudo cp cuda/include/cudnn.h /usr/local/cuda/include
 fi
@@ -44,7 +45,7 @@ sudo ldconfig /usr/local/cuda/lib64
 # Get caffe, and install python requirements
 cd ~/
 # git clone https://github.com/BVLC/caffe.git
-git clone --branch caffe-0.13 https://github.com/NVIDIA/caffe.git
+git clone https://github.com/NVIDIA/caffe.git
 
 if hash conda 2>/dev/null ; then
   conda install -y opencv
@@ -65,7 +66,7 @@ fi
 
 # Prepare Makefile.config so that it can build on aws
 cp Makefile.config.example Makefile.config
-if [ -f "../cudnn-7.0-linux-x64-v3.0-prod.tgz" ] ; then
+if [ -f "../cudnn-7.0-linux-x64-v4.0-prod.tgz" ] ; then
   sed -i '/^# USE_CUDNN := 1/s/^# //' Makefile.config
 fi
 sed -i '/^# WITH_PYTHON_LAYER := 1/s/^# //' Makefile.config
