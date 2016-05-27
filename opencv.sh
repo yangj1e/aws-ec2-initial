@@ -18,12 +18,12 @@ sudo update-rc.d create_build_dir defaults
 cd /mnt/build_tmp
 git clone https://github.com/Itseez/opencv.git
 cd opencv
-git checkout 3.0.0
+git checkout 3.1.0
 
 cd /mnt/build_tmp
 git clone https://github.com/Itseez/opencv_contrib.git
 cd opencv_contrib
-git checkout 3.0.0
+git checkout 3.1.0
 
 cd /mnt/build_tmp/opencv
 mkdir build
