@@ -3,7 +3,7 @@
 cd ~/
 git clone https://github.com/NVIDIA/DIGITS.git
 cd DIGITS
-git checkout v3.2.0
+git checkout v3.3.0
 echo '[DIGITS]' >> digits/digits.cfg
 echo 'caffe_root = /home/ubuntu/caffe' >> digits/digits.cfg
 
